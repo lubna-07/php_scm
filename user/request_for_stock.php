@@ -17,7 +17,7 @@ include "header.php" ;
         <div class="row-fluid" style="background-color: white; min-height: 1000px; padding:10px;">
         <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Add product</h5>
+          <h5>Request product</h5>
         </div>
         <div class="widget-content nopadding">
           <form name="form1" action="" method="post" class="form-horizontal" >
@@ -33,17 +33,30 @@ include "header.php" ;
                 <input type="text" class="span11" placeholder="Product Name" name="product_name" required/>
               </div>
             </div>
-           
-            
+
             <div class="control-group">
-              <label class="control-label">Packing Size :</label>
+              <label class="control-label">Quantity :</label>
               <div class="controls">
-                <input type="number" class="span11" placeholder="Packing Size" name="packing_size" required/>
+                <input type="number" class="span11" placeholder="Quantity" name="qty" required/>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Name :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Name" name="name" required/>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Phone Number :</label>
+              <div class="controls">
+                <input type="number" class="span11" placeholder="Phone Number" name="num" required/>
               </div>
             </div>
 
             <div class="alert alert-danger" style="display:none" id="error"> 
-                <strong>This is duplicate entry. Try another.</strong>    
+                <strong>Error in sending request.</strong>    
             </div>
 
             <div class="form-actions">
@@ -51,7 +64,7 @@ include "header.php" ;
             </div>
 
             <div class="alert alert-success" style="display:none" id="success"> 
-                <strong>Inserted Successfully! </strong>
+                <strong>Request sent Successfully! </strong>
             </div>
             
           </form>
@@ -60,41 +73,7 @@ include "header.php" ;
         </div>
         
       </div>
-      <div class="widget-content nopadding">
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Company Name</th>
-                  <th>Product Name</th>
-                  <th>Packing Size</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-
-              <?php
-                    $res=mysqli_query($link,"select * from products");
-                    while($row=mysqli_fetch_array($res))
-                    {
-                        ?>
-                        <tr>
-                        <td><?php echo $row['company_name']; ?></td>
-                        <td><?php echo $row['product_name']; ?></td>
-                        <td><?php echo $row['packing_size']; ?></td>
-                        <td><a href="edit_product.php?id=<?php echo $row['id'];?>">Edit</a></td>
-                        <td><a href="delete_product.php?id=<?php echo $row['id'];?>">Delete</a></td>
-                        </tr>
-                        <?php
-                       
-                    }
-                   
-              ?>
-                
-                
-              </tbody>
-            </table>
-          </div>
+      
         </div>
 
     </div>
@@ -107,27 +86,9 @@ include "header.php" ;
 <?php
 if(isset($_POST['submit1']))
 {
-        $query="select * from products where company_name= '$_POST[company_name]' && product_name ='$_POST[product_name]'";
-        $res=mysqli_query($link,$query);
-        $count =0;
-        $count=mysqli_num_rows($res);
-
-        if($count > 0)
-        {
-          ?>
-          <script type="text/javascript">
-          document.getElementById("success").style.display="none";
-          document.getElementById("error").style.display="block";
-          setTimeout(function () {
-              window.location.href = window.location.href;
-          }, 3000);
-          </script>
-        <?php
-        }
-        else
-        {
-          $query="insert into products 
-          values(NULL, '$_POST[company_name]','$_POST[product_name]','$_POST[quantity]')";
+       
+          $query="insert into request_for_stock 
+          values(NULL,'$_POST[name]', '$_POST[company_name]','$_POST[product_name]',$_POST[qty],$_POST[num])";
           $res=mysqli_query($link,$query);
           ?>
           <script type="text/javascript">
@@ -138,7 +99,7 @@ if(isset($_POST['submit1']))
           }, 3000);
           </script>
           <?php	
-        }       
+               
 
 }
 ?>  

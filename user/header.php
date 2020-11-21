@@ -50,44 +50,13 @@
         <li class="active">
             <a href="index.html"><i class="icon icon-home"></i><span>Dashboard</span></a>
         </li>
+
         <li>
-            <a href="add_new_user.php"><i class="icon icon-user"></i><span>Add new user</span></a>
+            <a href="sales_master.php"><i class="icon icon-user"></i><span>Purchase product</span></a>
         </li>
 
         <li>
-            <a href="add_new_party.php"><i class="icon icon-user"></i><span>Add new party</span></a>
-        </li>
-
-        <li>
-            <a href="add_new_company.php"><i class="icon icon-user"></i><span>Add new company</span></a>
-        </li>
-
-        <li>
-            <a href="add_new_product.php"><i class="icon icon-user"></i><span>Add new product</span></a>
-        </li>
-
-        <li>
-            <a href="purchase_master.php"><i class="icon icon-user"></i><span>Purchase Master</span></a>
-        </li>
-
-        <li>
-            <a href="stock_master.php"><i class="icon icon-user"></i><span>Stock Master</span></a>
-        </li>
-
-        <li>
-            <a href="sales_master.php"><i class="icon icon-user"></i><span>Sale Master</span></a>
-        </li>
-
-        <li>
-            <a href="view_bills.php"><i class="icon icon-user"></i><span>View Bill</span></a>
-        </li>
-
-        <li>
-            <a href="request_for_stock.php"><i class="icon icon-user"></i><span>Request of Stocks</span></a>
-        </li>
-        
-        <li>
-            <a href="customer_purchase.php"><i class="icon icon-user"></i><span>Customer Purchase</span></a>
+            <a href="request_for_stock.php"><i class="icon icon-user"></i><span>Request for stock</span></a>
         </li>
 
     </ul>

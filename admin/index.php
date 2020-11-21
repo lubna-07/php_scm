@@ -52,10 +52,15 @@
             $username = mysqli_real_escape_string($link,$_POST['username']);
             $password = mysqli_real_escape_string($link,$_POST['password']);
             $count = 0;
+            $count2 = 0;
             $query="select * from user_registration where username='$username' && password='$password' 
             && role ='admin' && status='active'";
             $res=mysqli_query($link,$query);
             $count=mysqli_num_rows($res);
+
+            $query2="select * from user_registration where username='$username' && password='$password' && role='user' && status='active'";
+            $res2=mysqli_query($link,$query2);
+            $count2=mysqli_num_rows($res2);
             
             if($count > 0)
             {
@@ -65,13 +70,24 @@
                 </script>
                 <?php
             }
-            else 
+           else if($count2 > 0)
             {
+                ?>
+                <script type="text/javascript">
+                 window.location="../user/demo.php";
+                </script>
+                <?php
+            }
+
+            else
+            {
+          
                 ?>
                 <div class="alert alert-danger"> 
                 Invalid username or password.
                 </div>
                 <?php
+
             }
 
            
